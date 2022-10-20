@@ -27,7 +27,7 @@ class InstantgSpider(scrapy.Spider):
             for url in urls :
                 parsed_url = urlparse(url)
                 self.captured_value = parse_qs(parsed_url.query)['type[0]']
-                print(self.captured_value)
+
                 yield Request(url=url, callback=self.parse_instant)
                 
 
@@ -62,7 +62,7 @@ class InstantgSpider(scrapy.Spider):
               item['time'] = 'None'
             
             try: 
-              item['platform'] = self.captured_value
+              item['platform'] = "None"
             except:
               item['platform'] = 'None'
             
